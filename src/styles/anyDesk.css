@@ -1,0 +1,30 @@
+ .generalAnyDesk{
+    background-image: url('../../public/image/AnyDeskLogo.png'); /* Ruta a la imagen en el directorio public */
+    background-size: 700px 600px; /* (Cover) Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh; /* Ajusta la altura del contenedor para que ocupe al menos el alto de la ventana */
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
+.title{
+    border: solid 3px rgb(230, 61, 61);
+    background-color:rgb(230, 61, 61);
+    color: white;
+    text-align: center;
+    font-family: cursive;
+} 
+  
+.searchConexion{
+    border: rgb(230, 61, 61) 3px solid;
+    padding: 10px;
+}
+
+.tableAnydesk{
+    padding: 10px;
+}

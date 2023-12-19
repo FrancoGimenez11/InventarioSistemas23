@@ -1,0 +1,37 @@
+.conteinerUserWin {
+    min-height: 90vh; /* Ajusta la altura del contenedor para que ocupe al menos el alto de la ventana */
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .titleWindows{
+    text-align: center;
+    background-color: green;
+    color: white;
+    padding: 5px;
+  }
+
+  .searchUser{
+    border: green 5px solid;
+    padding: 10px;
+  }
+
+  .tableUserWindows{
+    padding: 9px;
+  }
+
+  /*Table*/
+  .indiceTable th{
+    color:white;
+    background-color: green;
+  }
+
+  /*Modal*/
+  .TitleModal{
+    background-color: green;
+    color: white;
+  }
