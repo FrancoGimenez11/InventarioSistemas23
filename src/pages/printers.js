@@ -150,7 +150,7 @@ export default function printers(){
       serie:null,
     },
     {
-      model:"HP LaserJet 3015",
+      model:"HP LaserJet 3015 (Odesa)",
       user:"Sergio Peresotti",
       int:"172",
       ip:"usb",

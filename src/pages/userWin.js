@@ -32,7 +32,7 @@ const computer =[
     impAlt:"",
   },
   {
-    ip:"192.168.171.102",
+    ip:"192.168.170.155",
     cpu:"MesaEntrada",
     area:"Atención al Cliente",
     user:"gcastro",
@@ -512,13 +512,133 @@ const computer =[
     impAlt:"",
   },
   {
-    ip:"",
-    cpu:"",
-    area:"",
-    user:"",
-    password:"",
+    ip:"192.168.170.145",
+    cpu:"ZayaSebastian",
+    area:"IPTV",
+    user:"iptv",
+    password:"2022Sebanx560+",
     monitor:"",
-    impPred:"",
+    impPred:"HP Laserjet 500 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.185",
+    cpu:"ColomboEnrique",
+    area:"IPTV",
+    user:"ecolombo",
+    password:"enrique",
+    monitor:"",
+    impPred:"HP LaserJet 1102",
+    impAlt:"HP Laserjet 500 (Red)",
+  },
+  {
+    ip:"192.168.170.141",
+    cpu:"Iptv6",
+    area:"IPTV",
+    user:"iptv1",
+    password:"iptv2022",
+    monitor:"",
+    impPred:"HP Laserjet 500 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.143",
+    cpu:"Iptv5",
+    area:"IPTV",
+    user:"iptv3",
+    password:"iptv3",
+    monitor:"",
+    impPred:"HP Laserjet 500 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.180",
+    cpu:"Iptv3",
+    area:"IPTV",
+    user:"iptv2",
+    password:"iptv2022",
+    monitor:"",
+    impPred:"HP Laserjet 500 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.123",
+    cpu:"Laboratorio1",
+    area:"Mantenimiento",
+    user:"jgriguol",
+    password:"stk2002",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"",
+    cpu:"Laboratorio2",
+    area:"Mantenimiento",
+    user:"mmena",
+    password:"labmena1",
+    monitor:"",
+    impPred:"HP LaserJet 1102",
+    impAlt:"HP LaserJet 425 (Red)",
+  },
+  {
+    ip:"",
+    cpu:"Laboratorio3",
+    area:"Mantenimiento",
+    user:"laboratorio",
+    password:"labmed1",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.151",
+    cpu:"Mantenimiento",
+    area:"Mantenimiento",
+    user:"laboratorio",
+    password:"labmed1",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"",
+    cpu:"RamellaSeba",
+    area:"Mantenimiento",
+    user:"laboratorio",
+    password:"labmed1",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
+    impAlt:"",
+  },
+  {
+    ip:"192.168.170.52",
+    cpu:"Flota",
+    area:"Mantenimiento",
+    user:"laboratorio",
+    password:"labmed1",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
+    impAlt:"HP LaserJet Color 1525",
+  },
+  {
+    ip:"192.168.170.86",
+    cpu:"PettinaRodrigo",
+    area:"Mantenimiento",
+    user:"rpettina",
+    password:"queteimxta",
+    monitor:"",
+    impPred:"HP LaserJet 1018",
+    impAlt:"HP LaserJet 425 (Red)",
+  },
+  {
+    ip:"192.168.170.75",
+    cpu:"PaceLuis",
+    area:"Mantenimiento",
+    user:"laboratorio",
+    password:"labmed1",
+    monitor:"",
+    impPred:"HP LaserJet 425 (Red)",
     impAlt:"",
   },
   {
@@ -537,10 +657,16 @@ const computer =[
 export default function userWindows () {
 
   /*Modal*/
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRowData, setSelectedRowData] = useState(null);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleRowClick = (rowData) => {
+    setSelectedRowData(rowData);
+    setShowModal(true);
+  };
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   /*Formulario Search*/
 
@@ -641,7 +767,6 @@ export default function userWindows () {
           <Table striped bordered hover >
             <thead >
               <tr className="indiceTable">
-                <th>IP</th>
                 <th>Computadora</th>
                 <th>Área</th>
                 <th>Usuario</th>
@@ -652,26 +777,33 @@ export default function userWindows () {
             <tbody>
             {filteredData.map((item) => (
               <tr key={item}>
-                <td>{item.ip}</td>
                 <td><b>{item.cpu}</b></td>
                 <td>{item.area}</td>
                 <td>{item.user}</td>
                 <td>{item.password}</td>
                 <td>
-                  <Button variant="info" onClick={handleShow}>
+                  <Button variant="info" onClick={() => handleRowClick(item)}>
                     <b>Info</b>
                   </Button>
 
-                  <Modal show={show} onHide={handleClose} centered>
+                  <Modal show={showModal} onHide={() => setShowModal(false)} centered>
                     <Modal.Header className="TitleModal" closeButton>
                       <Modal.Title>Informacion Adicional</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p><b>Impresoras Predeterminada:</b></p>
-                        <p><b>Impresoras Alternativa:</b></p>
+                    {selectedRowData && (
+                      <>
+                        <p><b>IP:</b> {selectedRowData.ip}</p>
+                        <p><b>Area:</b> {selectedRowData.area}</p>
+                        <p><b>Usuario de Windows:</b> {selectedRowData.user}</p>
+                        <p><b>Contraseña:</b> {selectedRowData.password}</p>
+                        <p><b>Impresoras Predeterminada:</b> {selectedRowData.impPred}</p>
+                        <p><b>Impresoras Alternativa:</b> {selectedRowData.impAlt}</p>
                         <p><b>Otras:</b></p>
                         <p><b>Otras:</b></p>
                         <p>Mas</p>
+                      </>
+                        )}
                     </Modal.Body>
                     {/* <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose}>
