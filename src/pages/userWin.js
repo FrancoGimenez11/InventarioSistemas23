@@ -891,25 +891,49 @@ export default function userWindows () {
     setFilterGender(event.target.value);
   };
 
-  const applyFilters = () => {
-    const newFilteredData = computer.filter((item) => {
-      const nameMatch = item.cpu.toLowerCase().includes(filterName.toLowerCase());
-      const genderMatch = filterGender === 'Todos' || item.area === filterGender;
+  // const applyFilters = () => {
+  //   const newFilteredData = computer.filter((item) => {
+  //     const nameMatch = item.cpu.toLowerCase().includes(filterName.toLowerCase());
+  //     const genderMatch = filterGender === 'Todos' || item.area === filterGender;
 
-      return nameMatch && genderMatch;
-    });
+  //     return nameMatch && genderMatch;
+  //   });
 
-    setFilteredData(newFilteredData);
-  };
+  //   setFilteredData(newFilteredData);
+  // };
 
 
   /*Button de Reseteo de tabla */
-  const resetFilters = () => {
-    setFilterName('');
-    setFilterGender('Todos');
-    setFilteredData([]);
-  };
+  // const resetFilters = () => {
+  //   setFilterName('');
+  //   setFilterGender('Todos');
+  //   setFilteredData([]);
+  // };
+  
+  /* */
+  const [estadoBoton, setEstadoBoton] = useState(true);
 
+ 
+
+  const handleClick = () =>{
+    if(estadoBoton){
+      const newFilteredData = computer.filter((item) => {
+        const nameMatch = item.cpu.toLowerCase().includes(filterName.toLowerCase());
+        const genderMatch = filterGender === 'Todos' || item.area === filterGender;
+  
+        return nameMatch && genderMatch;
+      });
+  
+      setFilteredData(newFilteredData);
+    }
+    else{
+      
+        setFilterName('');
+        setFilterGender('Todos');
+        setFilteredData([]);
+        setEstadoBoton(estadoBoton);
+    }
+  }
 
   return(
     
@@ -963,8 +987,10 @@ export default function userWindows () {
             </Form.Group>
           </Row>
 
-          <Button variant="success" onClick={applyFilters}>Buscar</Button>
-          <Button variant="success" onClick={resetFilters}>Reiniciar</Button>
+          {/* <Button variant="success" onClick={applyFilters}>Buscar</Button>
+          <Button variant="success" onClick={resetFilters}>Reiniciar</Button> */}
+
+          <Button variant="success" onClick={handleClick}>{estadoBoton ? 'Buscar' : 'Reiniciar'}</Button>
 
         </Form>
 
